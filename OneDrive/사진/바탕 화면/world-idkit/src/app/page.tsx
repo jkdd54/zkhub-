@@ -1,37 +1,29 @@
+import React, { createContext, useState } from 'react';
 import { IDKitWidget, VerificationLevel } from '@worldcoin/idkit';
 
-interface ISuccessResult {
-  proof: string;
-  nullifier_hash: string;
-  merkle_root: string;
-  verification_level: 'orb' | 'device';
-}
-
-const verifyProof = async (proof: ISuccessResult) => {
-  console.log('proof', proof);
+const verifyProof = async (proof: any) => {
   const response = await fetch('/api/verify', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ ...proof, action: "verify" }),
+    body: JSON.stringify({ ...proof, action: 'verify' }),
   });
 
   if (response.ok) {
     const { verified } = await response.json();
     return verified;
   } else {
-    const { error } = await response.json();
-    throw new Error(error);
+    const { code, detail } = await response.json();
+    throw new Error(`Error Code ${code}: ${detail}`);
   }
 };
 
 const onSuccess = () => {
-  console.log("Success");
-  window.location.href = '/?login=success';
+  console.log('Success');
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="container-center">
       <h1>Community Site</h1>
@@ -44,7 +36,7 @@ export default function Home() {
         onSuccess={onSuccess}
       >
         {({ open }) => (
-          <button onClick={open} className="bg-blue-600 text-white px-4 py-2 rounded-md mt-4">
+          <button onClick={open}>
             Verify with World ID
           </button>
         )}
