@@ -1,0 +1,25 @@
+# Ignore Windows system directories and files
+AppData/
+Application Data/
+Cookies/
+Desktop/
+Documents/
+Downloads/
+Favorites/
+Links/
+Music/
+NTUSER.DAT*
+Pictures/
+PrintHood/
+Recent/
+Saved Games/
+Searches/
+SendTo/
+Templates/
+Videos/
+시작 메뉴/
+OneDrive/
+*.lnk
+
+# Ignore Git-specific files and directories
+.gitignore
