@@ -3,6 +3,7 @@ name: Run Scheduled Webhook
 on:
   schedule:
     - cron: '0 * * * *'  # 매 시간 정각에 실행
+  workflow_dispatch:      # 수동 실행을 위한 트리거 추가
 
 jobs:
   call-webhook:
@@ -10,5 +11,3 @@ jobs:
     steps:
       - name: Call API
         run: curl -X GET "https://www.zkhub.world/api/cron?secret=zxcv123456"
-
-//
