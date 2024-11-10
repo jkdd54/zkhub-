@@ -1,9 +1,8 @@
 name: Run Scheduled Webhook
 
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '0 * * * *'  # 매시간 정각에 실행
 
 jobs:
   call-webhook:
