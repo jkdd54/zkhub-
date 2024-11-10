@@ -1,0 +1,12 @@
+name: Run Scheduled Webhook
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 매 시간 정각에 실행
+
+jobs:
+  call-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call API
+        run: curl -X GET "https://www.zkhub.world/api/cron?secret=zxcv123456"
