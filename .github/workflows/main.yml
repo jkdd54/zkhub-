@@ -1,0 +1,13 @@
+name: Run Scheduled Webhook
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  call-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call API
+        run: curl -X GET "https://www.zkhub.world/api/cron?secret=zxcv123456"
