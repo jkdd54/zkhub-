@@ -10,3 +10,5 @@ jobs:
     steps:
       - name: Call API
         run: curl -X GET "https://www.zkhub.world/api/cron?secret=zxcv123456"
+
+//
