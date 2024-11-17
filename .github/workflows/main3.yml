@@ -1,0 +1,13 @@
+name: Run Scheduled Webhook
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 매시간 정각에 실행
+
+jobs:
+  call-webhook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2  # 타임아웃을 2분으로 설정
+    steps:
+      - name: Call API
+        run: curl -X GET "https://www.zkhub.world/api/cron3?secret=zxcv123456"
